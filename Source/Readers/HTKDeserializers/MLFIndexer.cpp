@@ -119,6 +119,11 @@ namespace Microsoft { namespace MSR { namespace CNTK {
                 break;
                 case 1:
                 {
+                    // When several files are appended to a big mlf, usually the can be 
+                    // an MLF header between the utterances.
+                    if (std::string(lines[i].begin(), lines[i].end()) == "!#MLF#!")
+                        continue;
+
                     sd = {};
                     sd.m_fileOffsetBytes = m_fileOffsetStart + lines[i].begin() - m_buffer.data();
                     isValid = TryParseSequenceId(lines[i], id, corpus->KeyToId);
