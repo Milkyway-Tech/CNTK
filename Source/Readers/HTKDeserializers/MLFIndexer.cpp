@@ -121,7 +121,7 @@ namespace Microsoft { namespace MSR { namespace CNTK {
                 {
                     // When several files are appended to a big mlf, usually the can be 
                     // an MLF header between the utterances.
-                    if (std::string(lines[i].begin(), lines[i].end()) == "!#MLF#!")
+                    if (std::string(lines[i].begin(), lines[i].end()) == "#!MLF!#")
                         continue;
 
                     sd = {};
